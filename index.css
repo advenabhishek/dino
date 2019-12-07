@@ -1,0 +1,32 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+.playground {
+    height: 500px;
+    width: 1000px;
+    background-color: #333333;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #000000;
+}
+
+.player{
+    position: fixed;
+    background-color: #ffffff;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    /* top:490px; */
+}
+
+.obstacle{
+    position: fixed;
+    background-color: red;
+    width: 10px;
+}
