@@ -8,13 +8,12 @@ class Generation {
         this.generatePlayers(playerCount);
         this.inPlay1 = false
         this.inPlay2 = false
-        console.log(this.id)
         document.title = 'Generation :: ' + this.id
     }
 
     getNextGeneration = (parentGeneration) => {
         //sort the players with score
-        console.log(parentGeneration)
+        // console.log(parentGeneration)
         let players = parentGeneration.players.sort((a, b) => {
             return a.score > b.score ? -1 : 1
         })
@@ -51,14 +50,12 @@ class Generation {
                 for (let j = 0; j < this.players.length; j++) {
                     if (this.players[j] && !this.players[j].dead && Math.abs(item.cordinate[0] - this.players[j].cordinate[0]) < 5) {
                         if (item.height > this.players[j].cordinate[1]) {
-                            console.log('x diff - ', Math.abs(item.cordinate[0] - this.players[j].cordinate[0]))
-                            console.log('y diff - ', item.height, this.players[j].cordinate[1])
-                            console.log('score  - ', this.players[j].score)
                             this.players[j].max_score = this.players[j].score
                             // clearInterval(a)
                             this.players[j].clearDOM()
                             this.players[j].high_score = this.players[j].score;
                             this.players[j].dead = true
+                            console.log(j, 'Dead')
                             // delete this.players[j]
                             this.alivePlayers--;
                         };
@@ -71,10 +68,10 @@ class Generation {
         this.inplay1 = setInterval(() => {
             if (this.alivePlayers == 0) {
                 console.log('ALL DEAD!!!!!!!!!!')
-
+                this.score = Math.max(...(this.players.map(item=>item.score)))
+                console.log(this.score)
                 clearInterval(this.inplay1)
                 clearInterval(this.inplay2)
-                console.log(this)
                 this.getNextGeneration(this)
             }
             for (let i = 0; i < this.players.length; i++) {

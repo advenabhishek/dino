@@ -16,16 +16,11 @@ class Player {
         this.DOM.id = this.id + '-player'
         this.DOM.className = "player"
         this.DOM.style.backgroundColor = this.color
-        // console.log(this.color)
         document.getElementById("playground").appendChild(this.DOM)
         this.DOMReference = document.getElementById(this.DOM.id)
-        // console.log(this.DOMReference)
         this.score = 0;
         setInterval(() => {
             this.score++;
-            // if(this.cordinate[1]>10){
-            //     console.log('*')
-            // }
             this.DOM.style.top = 485 - this.cordinate[1]
             this.DOM.style.left = this.cordinate[0]
         }, REFRESH_RATE)
